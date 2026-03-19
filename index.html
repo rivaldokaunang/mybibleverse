@@ -158,14 +158,14 @@
       box-shadow: var(--shadow);
       background:
         linear-gradient(rgba(246,244,239,0.52), rgba(221,229,221,0.58)),
-        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
+        url('./background/photo-3.jpg') center/cover no-repeat;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.50), transparent 30%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.50), transparent 5%),
         linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(255,255,255,0.18));
     }
 
@@ -1344,7 +1344,7 @@
     const dailyVerse = {
       text: "Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan.",
       ref: "Yeremia 29:11",
-      reflection: "Hari ini Tuhan mengingatkan bahwa hidupmu tidak berjalan tanpa arah. Bahkan saat kamu belum mengerti semuanya, Dia tetap memegang masa depanmu."
+      reflection: "Ayat ini mengingatkan kepada kita bahwa hidup tidak berjalan tanpa arah. Bahkan ketika kita belum mengerti semuanya, Tuhan tetap memegang masa depan dengan kasih dan tujuan yang baik."
     };
 
     const moodVerses = {
@@ -2335,37 +2335,40 @@ function renderDownloadPreview() {
     return;
   }
 
-  if (selectedDownloadTheme === "nature-mist") {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80";
-    img.onload = function () {
-      ctx.drawImage(img, 0, 0, w, h);
+if (selectedDownloadTheme === "nature-mist") {
+  const img = new Image();
+  img.src = "background/photo-4.jpg";
 
-      const mist = ctx.createLinearGradient(0, 0, 0, h);
-      mist.addColorStop(0, "rgba(236,242,238,0.26)");
-      mist.addColorStop(0.45, "rgba(244,246,242,0.16)");
-      mist.addColorStop(1, "rgba(225,235,229,0.22)");
-      ctx.fillStyle = mist;
-      ctx.fillRect(0, 0, w, h);
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0, w, h);
 
-      ctx.fillStyle = "rgba(120, 145, 130, 0.10)";
-      ctx.beginPath();
-      ctx.arc(860, 240, 210, 0, Math.PI * 2);
-      ctx.fill();
+    const mist = ctx.createLinearGradient(0, 0, 0, h);
+    mist.addColorStop(0, "rgba(236,242,238,0.12)");
+    mist.addColorStop(0.45, "rgba(244,246,242,0.08)");
+    mist.addColorStop(1, "rgba(225,235,229,0.14)");
+    ctx.fillStyle = mist;
+    ctx.fillRect(0, 0, w, h);
 
-      drawDownloadCard(ctx, selectedDownloadTheme);
-    };
-    img.onerror = function () {
-      const grad = ctx.createLinearGradient(0, 0, 0, h);
-      grad.addColorStop(0, "#eef2ee");
-      grad.addColorStop(1, "#dfe8e1");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-      drawDownloadCard(ctx, selectedDownloadTheme);
-    };
-    return;
-  }
+    ctx.fillStyle = "rgba(120, 145, 130, 0.08)";
+    ctx.beginPath();
+    ctx.arc(860, 240, 210, 0, Math.PI * 2);
+    ctx.fill();
+
+    drawDownloadCard(ctx, selectedDownloadTheme);
+  };
+
+  img.onerror = function () {
+    console.log("Gagal load background:", img.src);
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, "#eef2ee");
+    grad.addColorStop(1, "#dfe8e1");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+    drawDownloadCard(ctx, selectedDownloadTheme);
+  };
+
+  return;
+}
 }
 
 function drawDownloadCard(ctx, theme = "soft-paper") {
