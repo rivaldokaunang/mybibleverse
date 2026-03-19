@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mybibleverse.id</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #F7F3EE;
+      --bg-soft: #FBF8F4;
+      --text: #4F3C2D;
+      --text-soft: #6E5E52;
+      --primary: #9B7354;
+      --primary-dark: #7C5A40;
+      --sage: #A8B8A2;
+      --sage-soft: #DCE5E0;
+      --card: rgba(255,255,255,0.80);
+      --line: #E6DDD3;
+      --shadow: 0 10px 30px rgba(79, 60, 45, 0.06);
+      --radius-xl: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 30%),
+        linear-gradient(to bottom, #f7f3ee, #f2ede7);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(251, 248, 244, 0.88);
+      border-bottom: 1px solid rgba(230, 221, 211, 0.8);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .social-link {
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.8);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line);
+      background: rgba(251, 248, 244, 0.96);
+      backdrop-filter: blur(12px);
+      padding: 10px 16px 18px;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 6px;
+      color: var(--text);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(230, 221, 211, 0.5);
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu.show {
+      display: block;
+    }
+
+    .hero {
+      padding: 56px 0 34px;
+    }
+
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      min-height: 620px;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(rgba(246,244,239,0.52), rgba(221,229,221,0.58)),
+        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.50), transparent 30%),
+        linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(255,255,255,0.18));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      padding: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.82);
+      color: #5F554E;
+      margin-bottom: 18px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.95;
+      margin-bottom: 18px;
+      color: #433124;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      max-width: 620px;
+      color: #4F463F;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      transition: 0.25s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 10px 20px rgba(155,115,84,0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(168,184,162,0.45);
+      color: #51473F;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-verse-card {
+      max-width: 520px;
+      background: rgba(95, 108, 96, 0.60);
+      color: #fff;
+      border-radius: 22px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .hero-verse-card .ref {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #f8e7d8;
+    }
+
+    section[id] {
+      scroll-margin-top: 110px;
+    }
+
+    section {
+      padding: 34px 0 12px;
+    }
+
+    section:nth-of-type(even):not(.hero) {
+      background: linear-gradient(to bottom, #ffffff, var(--sage-soft));
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      line-height: 1;
+      color: #5a4332;
+    }
+
+    .section-heading p {
+      color: var(--text-soft);
+      max-width: 560px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(230,221,211,0.9);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .daily-verse-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      line-height: 1.35;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .verse-ref {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .soft-text {
+      color: var(--text-soft);
+    }
+
+    .verse-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .mini-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .mini-btn:hover {
+      background: #f8f2eb;
+    }
+
+    .slider-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      min-height: 330px;
+      box-shadow: var(--shadow);
+    }
+
+    .slide {
+      display: none;
+      min-height: 330px;
+      padding: 36px;
+      color: white;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .slide.active {
+      display: flex;
+      align-items: end;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44, 43, 40, 0.72), rgba(44, 43, 40, 0.18));
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .slide small {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .slide h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+
+    .slide p {
+      max-width: 650px;
+      color: rgba(255,255,255,0.93);
+    }
+
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: none;
+      background: #d2c4b5;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: var(--primary);
+    }
+
+    .plan-grid,
+    .social-grid,
+    .saved-list,
+    .journal-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .plan-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .plan-card, .social-card, .saved-item, .testimony-item {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .plan-card.clickable {
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .plan-card.clickable:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(79, 60, 45, 0.09);
+      background: rgba(255,255,255,0.92);
+    }
+
+    .plan-detail-card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .plan-progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #eee5db;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--sage));
+      transition: width 0.3s ease;
+    }
+
+    .plan-day-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(244,241,236,0.92));
+      border: 1px solid rgba(168,184,162,0.18);
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 18px;
+    }
+
+    .plan-day-box h4 {
+      margin-bottom: 8px;
+      color: #5a4332;
+    }
+
+    .plan-card h3,
+    .social-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f0e5da;
+      color: #876246;
+      font-size: 0.84rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .social-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .journal-form input,
+    .journal-form textarea,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #d9cbbd;
+      background: rgba(255,255,255,0.86);
+      margin-top: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--text);
+    }
+
+    .journal-form textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .checkin-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .checkin-left {
+      display: grid;
+      gap: 18px;
+    }
+
+    .streak-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(238,243,241,0.88));
+      border: 1px solid rgba(168,184,162,0.26);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(79, 60, 45, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .streak-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    #streakCount {
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .checkin-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(250,248,245,0.86));
+      border: 1px solid rgba(168,184,162,0.18);
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 14px;
+      box-shadow: 0 8px 24px rgba(79, 60, 45, 0.04);
+    }
+
+    .checkin-box h3 {
+      margin-bottom: 10px;
+      color: #5b4b40;
+    }
+
+    .checkin-history-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .checkin-history-item {
+      background: rgba(255,255,255,0.64);
+      border: 1px solid rgba(230,221,211,0.9);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .checkin-history-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .checkin-history-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .status-waiting {
+      background: #f1ebe3;
+      color: #8a6a51;
+    }
+
+    .status-answered {
+      background: #dfe9df;
+      color: #5f735f;
+    }
+
+    .quiet-audio {
+      margin-top: 20px;
+    }
+
+    .quiet-audio-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .audio-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(244,241,236,0.92));
+      border: 1px solid rgba(168,184,162,0.18);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(79, 60, 45, 0.04);
+    }
+
+    .music-visual-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      min-height: 220px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 10px 28px rgba(79, 60, 45, 0.06);
+      margin-bottom: 16px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .music-visual-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(245, 243, 238, 0.25),
+        rgba(95, 108, 96, 0.42)
+      );
+      backdrop-filter: blur(1px);
+    }
+
+    .music-visual-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      color: #fff;
+    }
+
+    .music-visual-content .pill {
+      width: fit-content;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .music-track-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .music-track-subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+    }
+
+    .audio-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .audio-volume {
+      margin-top: 14px;
+    }
+
+    .audio-volume input[type="range"] {
+      width: 100%;
+      margin-top: 8px;
+      accent-color: #9B7354;
+    }
+
+    footer {
+      margin-top: 42px;
+      padding: 34px 0 46px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.45);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      max-width: 400px;
+    }
+
+    .footer-brand h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .fade-up {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .toast {
+      position: fixed;
+      top: 92px;
+      right: 20px;
+      z-index: 9999;
+      min-width: 260px;
+      max-width: 360px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(79, 60, 45, 0.92);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.16);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: all 0.28s ease;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .toast.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .toast.success {
+      background: rgba(95, 115, 95, 0.95);
+    }
+
+    .toast.warning {
+      background: rgba(155, 115, 84, 0.96);
+    }
+
+    .toast.info {
+      background: rgba(79, 60, 45, 0.92);
+    }
+
+    @media (max-width: 920px) {
+      .grid-2,
+      .social-grid,
+      .checkin-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-wrap {
+        min-height: 560px;
+      }
+
+      .hero-content {
+        padding: 30px 22px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .navbar {
+        padding: 14px 0;
+      }
+
+      .brand img {
+        width: 42px;
+      }
+
+      .brand {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+
+      .section-heading h2 {
+        font-size: 2.2rem;
+      }
+
+      .daily-verse-text {
+        font-size: 1.65rem;
+      }
+
+      .slide h3 {
+        font-size: 2rem;
+      }
+
+      .hero-actions,
+      .verse-actions,
+      .audio-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn,
+      .mini-btn {
+        width: 100%;
+      }
+
+      .toast {
+        top: 84px;
+        right: 12px;
+        left: 12px;
+        min-width: unset;
+        max-width: unset;
+      }
+    }
+
+    .download-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+}
+
+.download-modal.show {
+  display: block;
+}
+
+.download-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 34, 30, 0.42);
+  backdrop-filter: blur(8px);
+}
+
+.download-modal-content {
+  position: relative;
+  width: min(920px, calc(100% - 24px));
+  margin: 40px auto;
+  background: rgba(251,248,244,0.98);
+  border: 1px solid rgba(230,221,211,0.9);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.16);
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+.download-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.download-modal-head h3 {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.modal-close {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.theme-picker {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.theme-btn {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.86);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.theme-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border-color: transparent;
+}
+
+.download-preview-wrap {
+  background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(242,237,231,0.8));
+  border: 1px solid rgba(230,221,211,0.8);
+  border-radius: 22px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+#downloadPreviewCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  background: #f7f3ee;
+}
+
+@media (max-width: 640px) {
+  .download-modal-content {
+    margin: 14px auto;
+    padding: 16px;
+    max-height: calc(100vh - 28px);
+  }
+
+  .download-modal-head {
+    flex-direction: column;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a href="#" class="brand">
+        <img src="https://cdn-icons-png.flaticon.com/128/16538/16538607.png" alt="logo" width="50">
+        <div>mybibleverse.id</div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#today">Verse of the Day</a>
+        <a href="#plan">Reading Plan</a>
+        <a href="#checkin">Check-In</a>
+        <a href="#quiet-time">Quiet Time</a>
+        <a href="#answered-prayer">Answered Prayer</a>
+        <a href="#saved">Ayatku</a>
+        <a href="#connect" class="social-link">Connect</a>
+      </nav>
+
+      <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#today" onclick="closeMobileMenu()">Verse of the Day</a>
+      <a href="#plan" onclick="closeMobileMenu()">Reading Plan</a>
+      <a href="#checkin" onclick="closeMobileMenu()">Check-In</a>
+      <a href="#quiet-time" onclick="closeMobileMenu()">Quiet Time</a>
+      <a href="#answered-prayer" onclick="closeMobileMenu()">Answered Prayer</a>
+      <a href="#saved" onclick="closeMobileMenu()">Ayatku</a>
+      <a href="#connect" onclick="closeMobileMenu()">Connect</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-wrap fade-up">
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <div class="eyebrow">Ruang teduh digital untuk firman, doa, dan penguatan</div>
+            <h1>Temukan ayat yang menenangkan hatimu hari ini</h1>
+            <p>
+              Di tengah hari yang sibuk, hati yang lelah, dan hidup yang tidak selalu mudah,
+              selalu ada firman Tuhan yang bisa menemanimu dengan lembut.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="scrollToSection('today')">Lihat Ayat Hari Ini</button>
+              <button class="btn btn-secondary" onclick="scrollToSection('quiet-time')">Mulai Saat Teduh</button>
+            </div>
+
+            <div class="hero-verse-card">
+              <div class="ref">Yesaya 30:15</div>
+              <p>
+                “Dengan bertobat dan tinggal diam kamu akan diselamatkan, dalam tinggal tenang dan percaya terletak kekuatanmu.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="today">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Verse of the Day</h2>
+            <p>Satu ayat, satu penguatan, untuk mengingatkan bahwa Tuhan tetap hadir hari ini.</p>
+          </div>
+        </div>
+
+        <div class="grid-2 fade-up">
+          <div class="card">
+            <div class="daily-verse-text" id="dailyVerseText"></div>
+            <div class="verse-ref" id="dailyVerseRef"></div>
+            <p class="soft-text" id="dailyReflection"></p>
+
+          <div class="verse-actions">
+            <button class="mini-btn" onclick="saveCurrentVerse()">Simpan Ayat</button>
+            <button class="mini-btn" onclick="copyDailyVerse()">Copy Ayat</button>
+            <button class="mini-btn" onclick="shareDailyVerse()">Share Ayat</button>
+           <button class="mini-btn" onclick="openDownloadModal()">Download Ayat</button>
+          </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Verse of the Week</span>
+            <h3 style="margin-bottom:10px;">Refleksi Minggu Ini</h3>
+            <p class="soft-text">
+              Kadang yang kamu butuhkan bukan semua jawaban sekaligus, tapi satu firman yang cukup untuk menenangkan langkahmu hari ini.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="plan">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Reading Plan</h2>
+            <p>Plan sederhana yang bisa kamu pilih sesuai kebutuhanmu, lalu lanjutkan pelan-pelan setiap hari.</p>
+          </div>
+        </div>
+
+        <div class="plan-grid fade-up">
+          <div class="plan-card clickable" onclick="openPlan('plan7')">
+            <span class="pill">7 Hari</span>
+            <h3>Kembali Dekat dengan Tuhan</h3>
+            <p class="soft-text">Mulai lagi tanpa tekanan. Satu langkah kecil setiap hari tetap berarti.</p>
+          </div>
+
+          <div class="plan-card clickable" onclick="openPlan('plan14')">
+            <span class="pill">14 Hari</span>
+            <h3>Tenang di Tengah Kekhawatiran</h3>
+            <p class="soft-text">Ayat-ayat pilihan untuk hati yang sedang ramai dan penuh overthinking.</p>
+          </div>
+
+          <div class="plan-card clickable" onclick="openPlan('plan30')">
+            <span class="pill">30 Hari</span>
+            <h3>Membangun Kebiasaan Saat Teduh</h3>
+            <p class="soft-text">Untuk kamu yang ingin lebih disiplin tapi tetap dengan ritme yang lembut.</p>
+          </div>
+        </div>
+
+        <div id="planDetail" style="margin-top:24px;"></div>
+      </div>
+    </section>
+
+    <section id="checkin">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Daily Spiritual Check-In</h2>
+            <p>Berhenti sebentar, jujur dengan isi hati, lalu temukan ayat dan doa yang menemanimu hari ini.</p>
+          </div>
+        </div>
+
+        <div class="checkin-layout">
+          <div class="checkin-left">
+            <div class="streak-card">
+              <div class="streak-top">
+                <span class="pill">Spiritual Streak</span>
+                <span id="streakCount">0 hari</span>
+              </div>
+              <h3>Terus hadir pelan-pelan</h3>
+              <p class="soft-text" id="streakMessage">
+                Hari ini bisa jadi langkah kecil yang berarti.
+              </p>
+            </div>
+
+            <div class="card">
+              <form id="checkinForm" class="journal-form">
+                <label for="checkinMood">Hari ini aku merasa...</label>
+                <select id="checkinMood">
+                  <option value="">Pilih kondisi hatimu</option>
+                  <option value="takut">Takut</option>
+                  <option value="lelah">Lelah</option>
+                  <option value="bingung">Bingung</option>
+                  <option value="kecewa">Kecewa</option>
+                  <option value="sendiri">Sendiri</option>
+                  <option value="bersyukur">Bersyukur</option>
+                </select>
+
+                <label for="checkinNeed">Hari ini aku butuh...</label>
+                <select id="checkinNeed">
+                  <option value="">Pilih kebutuhanmu</option>
+                  <option value="kekuatan">Kekuatan</option>
+                  <option value="ketenangan">Ketenangan</option>
+                  <option value="pengharapan">Pengharapan</option>
+                  <option value="arah">Arah</option>
+                  <option value="penghiburan">Penghiburan</option>
+                </select>
+
+                <label for="checkinNote">Apa yang sedang kamu bawa dalam hati?</label>
+                <textarea id="checkinNote" placeholder="Tuliskan isi hatimu dengan jujur..."></textarea>
+
+                <button type="button" class="btn btn-primary" onclick="generateCheckinResult()">
+                  Lihat Penguatan Hari Ini
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Hasil Check-In</span>
+            <div id="checkinResult">
+              <p class="soft-text">Isi check-in dulu ya, nanti di sini akan muncul ayat, refleksi, doa singkat, dan langkah kecil untuk harimu.</p>
+            </div>
+
+            <div style="margin-top:20px;">
+              <span class="pill">Riwayat Check-In</span>
+              <div id="checkinHistory"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiet-time">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>3-Minute Quiet Time</h2>
+            <p>Saat teduh singkat untuk hari-hari yang sibuk, tapi tetap ingin dekat dengan Tuhan.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="pill" id="quietDay">Hari 1 dari 7</span>
+            <div class="daily-verse-text" id="quietVerseText"></div>
+            <div class="verse-ref" id="quietVerseRef"></div>
+            <p class="soft-text" id="quietReflection"></p>
+          </div>
+
+          <div class="card">
+            <span class="pill">Refleksi 3 Menit</span>
+            <h3 style="margin-bottom:10px;">Pertanyaan Hati</h3>
+            <p class="soft-text" id="quietQuestion" style="margin-bottom:16px;"></p>
+
+            <h3 style="margin-bottom:10px;">Doa Singkat</h3>
+            <p class="soft-text" id="quietPrayer"></p>
+
+            <div class="quiet-audio">
+              <div class="quiet-audio-top">
+                <span class="pill">Musik Teduh</span>
+                <span id="audioStatus" class="soft-text">Siap diputar</span>
+              </div>
+
+              <div class="audio-card">
+                <div class="music-visual-card" id="musicVisualCard">
+                  <div class="music-visual-content">
+                    <span class="pill">Musik Teduh</span>
+                    <div class="music-track-title" id="audioTitle">Instrumental 1</div>
+                    <div class="music-track-subtitle" id="audioSubtitle">Lembut untuk menemani saat teduhmu</div>
+                  </div>
+                </div>
+
+                <div class="audio-controls">
+                  <button class="mini-btn" id="playPauseBtn" onclick="toggleQuietAudio()">Putar Musik</button>
+                  <button class="mini-btn" onclick="nextTrack()">Ganti Musik</button>
+                </div>
+
+                <div class="audio-volume">
+                  <label for="volumeRange" class="soft-text">Volume</label>
+                  <input type="range" id="volumeRange" min="0" max="1" step="0.05" value="0.45" oninput="setAudioVolume(this.value)">
+                </div>
+              </div>
+
+              <audio id="quietAudio" preload="none"></audio>
+            </div>
+
+            <div class="verse-actions">
+              <button class="mini-btn" onclick="nextQuietTime()">Ayat Berikutnya</button>
+              <button class="mini-btn" onclick="copyQuietTime()">Copy Quiet Time</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="answered-prayer">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Answered Prayer Tracker</h2>
+            <p>Simpan jejak doa-doamu dan lihat kembali bagaimana Tuhan bekerja dalam hidupmu.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <form class="journal-form" onsubmit="event.preventDefault(); saveAnsweredPrayer();">
+              <label for="answeredTitle">Judul doa / kesaksian</label>
+              <input type="text" id="answeredTitle" placeholder="Contoh: Tuhan buka jalan dalam pekerjaanku" />
+
+              <label for="answeredStory">Ceritakan bagaimana Tuhan menjawab</label>
+              <textarea id="answeredStory" placeholder="Tuliskan kesaksianmu di sini..."></textarea>
+
+              <button type="submit" class="btn btn-primary">Simpan Kesaksian</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <span class="pill">Jejak Jawaban Tuhan</span>
+            <div class="journal-list" id="answeredPrayerList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="saved">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Ayatku</h2>
+            <p>Kumpulan ayat yang kamu simpan untuk dibaca kembali saat hati membutuhkan penguatan.</p>
+          </div>
+        </div>
+
+        <div class="saved-list fade-up" id="savedList"></div>
+      </div>
+    </section>
+
+    <section id="connect">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Connect</h2>
+            <p>Terhubung lewat Instagram supaya perjalanan rohanimu terasa lebih hidup dan konsisten setiap hari.</p>
+          </div>
+        </div>
+
+        <div class="social-grid fade-up">
+          <div class="social-card">
+            <span class="pill">Instagram</span>
+            <h3>@mybibleverse.id</h3>
+            <p class="soft-text">
+              Ayat harian, visual reflektif, dan penguatan singkat yang bisa menemanimu saat scroll di tengah hari.
+            </p>
+            <div class="verse-actions">
+              <a class="mini-btn" href="https://instagram.com/mybibleverse.id" target="_blank">Buka Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div class="footer-brand">
+        <h3>mybibleverse.id</h3>
+        <p class="soft-text">
+          Ruang teduh digital yang hadir untuk menguatkan, menenangkan, dan menemani langkahmu setiap hari lewat firman Tuhan.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#today">Ayat Hari Ini</a>
+        <a href="#plan">Reading Plan</a>
+        <a href="https://instagram.com/mybibleverse.id" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const dailyVerse = {
+      text: "Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan.",
+      ref: "Yeremia 29:11",
+      reflection: "Hari ini Tuhan mengingatkan bahwa hidupmu tidak berjalan tanpa arah. Bahkan saat kamu belum mengerti semuanya, Dia tetap memegang masa depanmu."
+    };
+
+    const moodVerses = {
+      takut: {
+        text: "Jangan takut, sebab Aku menyertai engkau, jangan bimbang, sebab Aku ini Allahmu.",
+        ref: "Yesaya 41:10",
+        reflection: "Rasa takutmu nyata, tapi penyertaan Tuhan lebih nyata lagi. Kamu tidak berjalan sendirian."
+      },
+      lelah: {
+        text: "Marilah kepada-Ku, semua yang letih lesu dan berbeban berat, Aku akan memberi kelegaan kepadamu.",
+        ref: "Matius 11:28",
+        reflection: "Tuhan tidak meminta kamu pura-pura kuat. Dia mengundangmu datang apa adanya."
+      },
+      bingung: {
+        text: "Percayalah kepada TUHAN dengan segenap hatimu, dan janganlah bersandar kepada pengertianmu sendiri.",
+        ref: "Amsal 3:5",
+        reflection: "Tidak semua jawaban harus langsung kamu tahu hari ini. Kadang iman berarti tetap melangkah meski belum melihat seluruh jalan."
+      },
+      kecewa: {
+        text: "TUHAN itu dekat kepada orang-orang yang patah hati, dan Ia menyelamatkan orang-orang yang remuk jiwanya.",
+        ref: "Mazmur 34:18",
+        reflection: "Kekecewaanmu tidak diabaikan Tuhan. Dia dekat justru di saat hatimu paling rapuh."
+      },
+      sendiri: {
+        text: "Aku sekali-kali tidak akan membiarkan engkau dan Aku sekali-kali tidak akan meninggalkan engkau.",
+        ref: "Ibrani 13:5",
+        reflection: "Walau dunia bisa membuatmu merasa sendiri, Tuhan tidak pernah pergi dari hidupmu."
+      },
+      bersyukur: {
+        text: "Bersyukurlah dalam segala hal, sebab itulah yang dikehendaki Allah di dalam Kristus Yesus bagi kamu.",
+        ref: "1 Tesalonika 5:18",
+        reflection: "Hati yang bersyukur membuat kita lebih peka melihat kebaikan Tuhan, bahkan dalam hal-hal kecil."
+      }
+    };
+
+    const checkinNeeds = {
+      kekuatan: {
+        text: "Tuhan tahu kamu sedang lelah, dan Dia tidak meminta kamu kuat sendirian.",
+        prayer: "Tuhan, hari ini aku butuh kekuatan dari-Mu. Tolong aku menjalani hari ini dengan hati yang tetap percaya."
+      },
+      ketenangan: {
+        text: "Tidak semua hal harus kamu selesaikan hari ini. Kadang Tuhan mengajarmu bernafas, diam, lalu percaya.",
+        prayer: "Tuhan, tenangkan hati dan pikiranku. Ajarku tinggal diam dan percaya kepada-Mu."
+      },
+      pengharapan: {
+        text: "Walau kamu belum melihat ujung jalannya, Tuhan masih menulis masa depanmu dengan baik.",
+        prayer: "Tuhan, pulihkan harapanku. Tolong aku percaya bahwa Engkau belum selesai bekerja dalam hidupku."
+      },
+      arah: {
+        text: "Saat kamu bingung, Tuhan tidak bingung. Dia tetap tahu arah yang harus kamu jalani.",
+        prayer: "Tuhan, tuntun langkahku. Beri aku hikmat untuk melihat jalan yang Engkau sediakan."
+      },
+      penghiburan: {
+        text: "Tuhan dekat kepada hati yang rapuh. Air matamu tidak pernah luput dari perhatian-Nya.",
+        prayer: "Tuhan, hiburkan aku hari ini. Peluk hatiku yang sedang lemah dan remuk."
+      }
+    };
+
+    const quietTimes = [
+      {
+        day: "Hari 1 dari 7",
+        text: "Diamlah dan ketahuilah, bahwa Akulah Allah.",
+        ref: "Mazmur 46:11",
+        reflection: "Tuhan mengundangmu berhenti di tengah pikiran yang ramai.",
+        question: "Apa yang paling membuat hatimu ramai hari ini?",
+        prayer: "Tuhan, ajarku diam dan percaya kepada-Mu."
+      },
+      {
+        day: "Hari 2 dari 7",
+        text: "Serahkanlah segala kekuatiranmu kepada-Nya, sebab Ia yang memelihara kamu.",
+        ref: "1 Petrus 5:7",
+        reflection: "Kamu tidak harus memikul semuanya sendiri.",
+        question: "Kekhawatiran apa yang paling berat kamu bawa hari ini?",
+        prayer: "Tuhan, aku menyerahkan kekhawatiranku kepada-Mu."
+      },
+      {
+        day: "Hari 3 dari 7",
+        text: "Kasih setia Tuhan tak berkesudahan, rahmat-Nya selalu baru tiap pagi.",
+        ref: "Ratapan 3:22-23",
+        reflection: "Selalu ada awal baru bersama Tuhan, bahkan setelah hari yang berat.",
+        question: "Apa yang ingin kamu mulai lagi bersama Tuhan?",
+        prayer: "Tuhan, terima kasih untuk kasih setia-Mu yang baru hari ini."
+      },
+      {
+        day: "Hari 4 dari 7",
+        text: "Jangan takut, sebab Aku menyertai engkau.",
+        ref: "Yesaya 41:10",
+        reflection: "Ketakutanmu nyata, tapi penyertaan Tuhan lebih nyata lagi.",
+        question: "Di bagian mana kamu paling butuh diyakinkan bahwa Tuhan menyertaimu?",
+        prayer: "Tuhan, tenangkan takutku dan kuatkan hatiku."
+      },
+      {
+        day: "Hari 5 dari 7",
+        text: "Marilah kepada-Ku, semua yang letih lesu dan berbeban berat.",
+        ref: "Matius 11:28",
+        reflection: "Tuhan tidak meminta kamu pura-pura kuat.",
+        question: "Beban apa yang paling melelahkanmu akhir-akhir ini?",
+        prayer: "Tuhan, aku datang apa adanya. Beri aku kelegaan."
+      },
+      {
+        day: "Hari 6 dari 7",
+        text: "Percayalah kepada TUHAN dengan segenap hatimu.",
+        ref: "Amsal 3:5",
+        reflection: "Saat jalan terasa kabur, Tuhan tetap melihat dengan jelas.",
+        question: "Hal apa yang sedang sulit kamu percayakan kepada Tuhan?",
+        prayer: "Tuhan, ajarku percaya meski aku belum melihat semuanya."
+      },
+      {
+        day: "Hari 7 dari 7",
+        text: "Bersyukurlah dalam segala hal.",
+        ref: "1 Tesalonika 5:18",
+        reflection: "Syukur kecil bisa membuka mata untuk melihat kasih Tuhan lebih jelas.",
+        question: "Tiga hal kecil apa yang masih bisa kamu syukuri hari ini?",
+        prayer: "Tuhan, lembutkan hatiku untuk melihat kebaikan-Mu."
+      }
+    ];
+
+    const quietTracks = [
+      {
+        title: "Walau Gunung Tak Berpindah",
+        subtitle: "Lembut untuk menemani saat teduhmu",
+        src: "audio/Music 1.mp3",
+        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        title: "Walk With You",
+        subtitle: "Tenang dan pelan untuk refleksi",
+        src: "audio/Music 2.mp3",
+        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        title: "You Are My All In All",
+        subtitle: "Nuansa hening untuk doa singkat",
+        src: "audio/Music 3.mp3",
+        image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=80"
+      }
+    ];
+
+    const readingPlans = {
+      plan7: {
+        title: "Kembali Dekat dengan Tuhan",
+        duration: 7,
+        description: "Plan singkat untuk kamu yang ingin mulai lagi pelan-pelan tanpa tekanan.",
+        days: [
+          { verse: "Mazmur 46:11", text: "Diamlah dan ketahuilah, bahwa Akulah Allah.", reflection: "Mulai dengan berhenti sejenak dan memberi ruang bagi Tuhan." },
+          { verse: "Matius 11:28", text: "Marilah kepada-Ku, semua yang letih lesu dan berbeban berat.", reflection: "Datanglah apa adanya, tanpa harus terlihat kuat." },
+          { verse: "Yesaya 41:10", text: "Jangan takut, sebab Aku menyertai engkau.", reflection: "Tuhan tidak meninggalkanmu di tengah rasa takutmu." },
+          { verse: "Amsal 3:5", text: "Percayalah kepada TUHAN dengan segenap hatimu.", reflection: "Tak semua harus kamu pahami dulu untuk bisa tetap percaya." },
+          { verse: "Ratapan 3:22-23", text: "Rahmat-Nya selalu baru tiap pagi.", reflection: "Selalu ada awal baru bersama Tuhan." },
+          { verse: "Filipi 4:6", text: "Nyatakanlah dalam segala hal keinginanmu kepada Allah.", reflection: "Bawa semua isi hatimu dalam doa, sekecil apa pun." },
+          { verse: "Yeremia 29:11", text: "Rancangan-Ku adalah rancangan damai sejahtera.", reflection: "Tuhan tetap memegang masa depanmu dengan baik." }
+        ]
+      },
+      plan14: {
+        title: "Tenang di Tengah Kekhawatiran",
+        duration: 14,
+        description: "Untuk hati yang ramai, overthinking, dan butuh diingatkan untuk kembali tenang.",
+        days: [
+          { verse: "1 Petrus 5:7", text: "Serahkanlah segala kekuatiranmu kepada-Nya.", reflection: "Kekhawatiranmu tidak harus kamu pikul sendiri." },
+          { verse: "Mazmur 55:23", text: "Serahkanlah kuatirmu kepada TUHAN.", reflection: "Tuhan sanggup menopangmu." },
+          { verse: "Filipi 4:7", text: "Damai sejahtera Allah... akan memelihara hati dan pikiranmu.", reflection: "Damai Tuhan bisa menjaga pikiranmu yang lelah." },
+          { verse: "Yesaya 26:3", text: "Yang hatinya teguh Kaujagai dengan damai sejahtera.", reflection: "Tuhan memberi damai saat kita tertuju pada-Nya." },
+          { verse: "Matius 6:34", text: "Janganlah kuatir akan hari besok.", reflection: "Hari ini saja dulu. Tuhan hadir di sini." },
+          { verse: "Yohanes 14:27", text: "Damai sejahtera Kutinggalkan bagimu.", reflection: "Damai dari Tuhan berbeda dari dunia." },
+          { verse: "Mazmur 34:5", text: "Aku telah mencari TUHAN, lalu Ia menjawab aku.", reflection: "Ada jawaban dan kelegaan saat kamu datang pada Tuhan." },
+          { verse: "Amsal 12:25", text: "Kekhawatiran dalam hati membungkukkan orang.", reflection: "Satu kata penghiburan bisa menegakkan kembali hati." },
+          { verse: "Roma 8:28", text: "Allah turut bekerja dalam segala sesuatu.", reflection: "Bahkan di hal yang belum kamu mengerti." },
+          { verse: "Mazmur 62:2", text: "Hanya dekat Allah saja aku tenang.", reflection: "Ketenangan sejati datang dari kedekatan dengan-Nya." },
+          { verse: "Keluaran 14:14", text: "TUHAN akan berperang untuk kamu.", reflection: "Ada momen saat kamu cukup diam dan percaya." },
+          { verse: "Ibrani 13:5", text: "Aku sekali-kali tidak akan membiarkan engkau.", reflection: "Kamu tidak sendirian." },
+          { verse: "Mazmur 23:1", text: "TUHAN adalah gembalaku, takkan kekurangan aku.", reflection: "Pemeliharaan Tuhan tetap nyata." },
+          { verse: "Yesaya 30:15", text: "Dalam tinggal tenang dan percaya terletak kekuatanmu.", reflection: "Tenang juga adalah bentuk iman." }
+        ]
+      },
+      plan30: {
+        title: "Membangun Kebiasaan Saat Teduh",
+        duration: 30,
+        description: "Plan untuk membangun ritme rohani yang konsisten, lembut, dan realistis.",
+        days: Array.from({ length: 30 }, (_, i) => ({
+          verse: `Hari ${i + 1}`,
+          text: "Lu bisa isi sendiri ayat harian plan 30 hari ini sesuai konsep konten mybibleverse.id.",
+          reflection: "Isi refleksi singkat yang sederhana, hangat, dan relevan untuk tiap hari."
+        }))
+      }
+    };
+
+    let quietIndex = (new Date().getDate() - 1) % quietTimes.length;
+    let currentTrackIndex = 0;
+    let toastTimer;
+
+    function showToast(message, type = "info") {
+      const toast = document.getElementById("toast");
+      if (!toast) return;
+
+      toast.className = "toast";
+      toast.classList.add(type);
+      toast.textContent = message;
+
+      clearTimeout(toastTimer);
+
+      requestAnimationFrame(() => {
+        toast.classList.add("show");
+      });
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2600);
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("show");
+    }
+
+    function closeMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.remove("show");
+    }
+
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function loadDailyVerse() {
+      document.getElementById("dailyVerseText").innerText = `"${dailyVerse.text}"`;
+      document.getElementById("dailyVerseRef").innerText = dailyVerse.ref;
+      document.getElementById("dailyReflection").innerText = dailyVerse.reflection;
+    }
+
+    function getSavedVerses() {
+      return JSON.parse(localStorage.getItem("savedVerses")) || [];
+    }
+
+    function saveCurrentVerse() {
+      const saved = getSavedVerses();
+      saved.unshift(dailyVerse);
+      localStorage.setItem("savedVerses", JSON.stringify(saved));
+      renderSavedVerses();
+      showToast("Ayat berhasil disimpan.", "success");
+    }
+
+    function deleteSavedVerse(index) {
+      const saved = getSavedVerses();
+      saved.splice(index, 1);
+      localStorage.setItem("savedVerses", JSON.stringify(saved));
+      renderSavedVerses();
+      showToast("Ayat berhasil dihapus.", "info");
+    }
+
+    function renderSavedVerses() {
+      const container = document.getElementById("savedList");
+      const saved = getSavedVerses();
+
+      if (saved.length === 0) {
+        container.innerHTML = `<div class="saved-item">Belum ada ayat yang disimpan.</div>`;
+        return;
+      }
+
+      container.innerHTML = saved.map((verse, index) => `
+        <div class="saved-item">
+          <div class="daily-verse-text" style="font-size:1.6rem;">"${verse.text}"</div>
+          <div class="verse-ref">${verse.ref}</div>
+          <button class="mini-btn" onclick="deleteSavedVerse(${index})">Hapus</button>
+        </div>
+      `).join('');
+    }
+
+    function copyDailyVerse() {
+      const text = `${dailyVerse.ref} - ${dailyVerse.text}`;
+      navigator.clipboard.writeText(text);
+      showToast("Ayat berhasil dicopy.", "success");
+    }
+
+    function shareDailyVerse() {
+      const text = `${dailyVerse.ref} - ${dailyVerse.text}`;
+      if (navigator.share) {
+        navigator.share({
+          title: "Ayat Hari Ini - mybibleverse.id",
+          text
+        });
+      } else {
+        navigator.clipboard.writeText(text);
+        showToast("Fitur share tidak tersedia. Ayat sudah dicopy.", "info");
+      }
+    }
+
+    function normalizeDate(date) {
+      const d = new Date(date);
+      d.setHours(0, 0, 0, 0);
+      return d;
+    }
+
+    function formatDateKey(date) {
+      const d = normalizeDate(date);
+      return d.toISOString().split("T")[0];
+    }
+
+    function getTodayKey() {
+      return formatDateKey(new Date());
+    }
+
+    function getCheckins() {
+      return JSON.parse(localStorage.getItem("checkins")) || [];
+    }
+
+    function saveCheckin(data) {
+      const list = getCheckins();
+      const todayKey = getTodayKey();
+      const alreadyToday = list.some(item => item.dateKey === todayKey);
+
+      if (alreadyToday) {
+        showToast("Kamu sudah check-in hari ini 🤍", "warning");
+        return;
+      }
+
+      list.unshift(data);
+      localStorage.setItem("checkins", JSON.stringify(list));
+      renderCheckinHistory();
+      renderStreak();
+      showToast("Check-in berhasil disimpan.", "success");
+    }
+
+    function deleteCheckin(index) {
+      const list = getCheckins();
+      list.splice(index, 1);
+      localStorage.setItem("checkins", JSON.stringify(list));
+      renderCheckinHistory();
+      renderStreak();
+      showToast("Riwayat check-in dihapus.", "info");
+    }
+
+    function calculateStreak() {
+      const list = getCheckins();
+      if (list.length === 0) return 0;
+
+      const uniqueDays = [...new Set(list.map(item => item.dateKey))].sort().reverse();
+      let streak = 0;
+      const cursor = new Date();
+      cursor.setHours(0, 0, 0, 0);
+
+      for (let i = 0; i < uniqueDays.length; i++) {
+        const key = formatDateKey(cursor);
+        if (uniqueDays.includes(key)) {
+          streak++;
+          cursor.setDate(cursor.getDate() - 1);
+        } else {
+          break;
+        }
+      }
+
+      return streak;
+    }
+
+    function getStreakMessage(streak) {
+      if (streak === 0) return "Hari ini bisa jadi langkah kecil yang berarti.";
+      if (streak === 1) return "Satu hari hadir tetap berarti. Pelan-pelan aja.";
+      if (streak < 4) return "Kamu sedang membangun kebiasaan yang lembut dan baik.";
+      if (streak < 7) return "Bagus banget. Kamu mulai konsisten datang kembali.";
+      return "Indah. Kamu sedang menciptakan ruang teduh yang nyata setiap hari.";
+    }
+
+    function renderStreak() {
+      const streak = calculateStreak();
+      const streakCount = document.getElementById("streakCount");
+      const streakMessage = document.getElementById("streakMessage");
+
+      if (streakCount) streakCount.innerText = `${streak} hari`;
+      if (streakMessage) streakMessage.innerText = getStreakMessage(streak);
+    }
+
+    function renderCheckinHistory() {
+      const container = document.getElementById("checkinHistory");
+      const list = getCheckins();
+
+      if (!container) return;
+
+      if (list.length === 0) {
+        container.innerHTML = `<p class="soft-text">Belum ada riwayat check-in. Hari ini bisa jadi awal yang baik.</p>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="checkin-history-list">
+          ${list.slice(0, 5).map((item, index) => `
+            <div class="checkin-history-item">
+              <div class="checkin-history-head">
+                <div>
+                  <strong>${item.date}</strong>
+                  <span class="soft-text">${item.mood} • ${item.need}</span>
+                </div>
+                <button class="mini-btn" onclick="deleteCheckin(${index})">Hapus</button>
+              </div>
+              ${item.note ? `<p class="soft-text" style="margin-top:8px;">${item.note}</p>` : ""}
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function generateCheckinResult() {
+      const mood = document.getElementById("checkinMood").value;
+      const need = document.getElementById("checkinNeed").value;
+      const note = document.getElementById("checkinNote").value.trim();
+      const result = document.getElementById("checkinResult");
+
+      if (!mood || !need) {
+        result.innerHTML = `<p class="soft-text">Pilih dulu kondisi hati dan kebutuhanmu ya.</p>`;
+        showToast("Pilih kondisi hati dan kebutuhanmu dulu ya.", "warning");
+        return;
+      }
+
+      const verse = moodVerses[mood];
+      const encouragement = checkinNeeds[need];
+      const actionMap = {
+        kekuatan: "Ambil waktu 3 menit untuk berhenti, tarik nafas, dan minta Tuhan menguatkan langkahmu hari ini.",
+        ketenangan: "Matikan distraksi sebentar dan serahkan satu kekhawatiranmu dalam doa sederhana.",
+        pengharapan: "Tulis satu hal kecil yang masih bisa kamu syukuri hari ini.",
+        arah: "Minta hikmat Tuhan sebelum mengambil satu keputusan yang sedang kamu pikirkan.",
+        penghiburan: "Izinkan dirimu menangis atau beristirahat tanpa merasa harus kuat terus."
+      };
+
+      const action = actionMap[need] || "Berhenti sejenak dan bawa hatimu kepada Tuhan.";
+      const payload = {
+        mood,
+        need,
+        note,
+        date: new Date().toLocaleDateString("id-ID"),
+        dateKey: getTodayKey()
+      };
+
+      result.innerHTML = `
+        <div class="checkin-box">
+          <h3>Ayat untuk Harimu</h3>
+          <div class="daily-verse-text" style="font-size:1.6rem;">"${verse.text}"</div>
+          <div class="verse-ref">${verse.ref}</div>
+        </div>
+
+        <div class="checkin-box">
+          <h3>Refleksi Singkat</h3>
+          <p class="soft-text">${verse.reflection}</p>
+          <p class="soft-text">${encouragement.text}</p>
+        </div>
+
+        <div class="checkin-box">
+          <h3>Doa Hari Ini</h3>
+          <p class="soft-text">${encouragement.prayer}</p>
+        </div>
+
+        <div class="checkin-box">
+          <h3>Langkah Kecil Hari Ini</h3>
+          <p class="soft-text">${action}</p>
+        </div>
+
+        ${
+          note
+            ? `<div class="checkin-box">
+                <h3>Yang Kamu Bawa Hari Ini</h3>
+                <p class="soft-text">${note}</p>
+              </div>`
+            : ""
+        }
+
+        <div class="verse-actions">
+          <button class="mini-btn" id="saveCheckinBtn">Simpan Check-In</button>
+        </div>
+      `;
+
+      document.getElementById("saveCheckinBtn").addEventListener("click", function () {
+        saveCheckin(payload);
+      });
+    }
+
+    function loadQuietTime() {
+      const item = quietTimes[quietIndex];
+      document.getElementById("quietVerseText").innerText = `"${item.text}"`;
+      document.getElementById("quietVerseRef").innerText = item.ref;
+      document.getElementById("quietReflection").innerText = item.reflection;
+      document.getElementById("quietQuestion").innerText = item.question;
+      document.getElementById("quietPrayer").innerText = item.prayer;
+      document.getElementById("quietDay").innerText = item.day;
+    }
+
+    function nextQuietTime() {
+      quietIndex = (quietIndex + 1) % quietTimes.length;
+      loadQuietTime();
+      showToast("Quiet Time berikutnya dimuat.", "info");
+    }
+
+    function copyQuietTime() {
+      const item = quietTimes[quietIndex];
+      const text = `${item.ref} - ${item.text}\n\nRefleksi: ${item.reflection}\n\nPertanyaan: ${item.question}\n\nDoa: ${item.prayer}`;
+      navigator.clipboard.writeText(text);
+      showToast("Quiet Time berhasil dicopy.", "success");
+    }
+
+    function initQuietAudio() {
+      const audio = document.getElementById("quietAudio");
+      if (!audio) return;
+
+      loadTrack(currentTrackIndex);
+      audio.volume = 0.45;
+
+      audio.addEventListener("ended", () => {
+        nextTrack(true);
+      });
+    }
+
+    function loadTrack(index) {
+      const audio = document.getElementById("quietAudio");
+      const title = document.getElementById("audioTitle");
+      const subtitle = document.getElementById("audioSubtitle");
+      const status = document.getElementById("audioStatus");
+      const playBtn = document.getElementById("playPauseBtn");
+      const visualCard = document.getElementById("musicVisualCard");
+
+      if (!audio || !title || !subtitle || !status || !playBtn || !visualCard) return;
+
+      const track = quietTracks[index];
+      audio.src = track.src;
+      title.innerText = track.title;
+      subtitle.innerText = track.subtitle;
+      visualCard.style.backgroundImage = `url('${track.image}')`;
+      status.innerText = "Siap diputar";
+      playBtn.innerText = "Putar Musik";
+    }
+
+    function toggleQuietAudio() {
+      const audio = document.getElementById("quietAudio");
+      const status = document.getElementById("audioStatus");
+      const playBtn = document.getElementById("playPauseBtn");
+
+      if (!audio) return;
+
+      if (audio.paused) {
+        audio.play()
+          .then(() => {
+            if (status) status.innerText = "Sedang diputar";
+            if (playBtn) playBtn.innerText = "Pause Musik";
+          })
+          .catch(() => {
+            if (status) status.innerText = "Gagal diputar";
+            showToast("Musik gagal diputar. Cek path file audionya ya bro.", "warning");
+          });
+      } else {
+        audio.pause();
+        if (status) status.innerText = "Dijeda";
+        if (playBtn) playBtn.innerText = "Putar Musik";
+      }
+    }
+
+    function nextTrack(autoPlay = false) {
+      const audio = document.getElementById("quietAudio");
+      const status = document.getElementById("audioStatus");
+
+      currentTrackIndex = (currentTrackIndex + 1) % quietTracks.length;
+      loadTrack(currentTrackIndex);
+
+      if (autoPlay && audio) {
+        audio.play()
+          .then(() => {
+            if (status) status.innerText = "Sedang diputar";
+            const playBtn = document.getElementById("playPauseBtn");
+            if (playBtn) playBtn.innerText = "Pause Musik";
+          })
+          .catch(() => {
+            if (status) status.innerText = "Siap diputar";
+          });
+      } else {
+        showToast("Musik diganti.", "info");
+      }
+    }
+
+    function setAudioVolume(value) {
+      const audio = document.getElementById("quietAudio");
+      if (!audio) return;
+      audio.volume = Number(value);
+    }
+
+    function getAnsweredPrayers() {
+      return JSON.parse(localStorage.getItem("answeredPrayers")) || [];
+    }
+
+    function saveAnsweredPrayer() {
+      const title = document.getElementById("answeredTitle").value.trim();
+      const story = document.getElementById("answeredStory").value.trim();
+
+      if (!title || !story) {
+        showToast("Isi judul dan ceritanya dulu ya.", "warning");
+        return;
+      }
+
+      const list = getAnsweredPrayers();
+      list.unshift({
+        title,
+        story,
+        status: "waiting",
+        date: new Date().toLocaleDateString("id-ID")
+      });
+
+      localStorage.setItem("answeredPrayers", JSON.stringify(list));
+      document.getElementById("answeredTitle").value = "";
+      document.getElementById("answeredStory").value = "";
+      renderAnsweredPrayers();
+      showToast("Kesaksian berhasil disimpan.", "success");
+    }
+
+    function togglePrayerStatus(index) {
+      const list = getAnsweredPrayers();
+      list[index].status = list[index].status === "waiting" ? "answered" : "waiting";
+      localStorage.setItem("answeredPrayers", JSON.stringify(list));
+      renderAnsweredPrayers();
+      showToast("Status doa diperbarui.", "info");
+    }
+
+    function deleteAnsweredPrayer(index) {
+      const list = getAnsweredPrayers();
+      list.splice(index, 1);
+      localStorage.setItem("answeredPrayers", JSON.stringify(list));
+      renderAnsweredPrayers();
+      showToast("Kesaksian dihapus.", "info");
+    }
+
+    function renderAnsweredPrayers() {
+      const list = getAnsweredPrayers();
+      const container = document.getElementById("answeredPrayerList");
+
+      if (!container) return;
+
+      if (list.length === 0) {
+        container.innerHTML = `<p class="soft-text">Belum ada kesaksian yang disimpan. Mungkin hari ini bisa jadi awal untuk melihat kembali kebaikan Tuhan.</p>`;
+        return;
+      }
+
+      container.innerHTML = list.map((item, index) => `
+        <div class="testimony-item">
+          <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap;">
+            <h4>${item.title}</h4>
+            <span class="status-pill ${item.status === "waiting" ? "status-waiting" : "status-answered"}">
+              ${item.status === "waiting" ? "Masih Didoakan" : "Sudah Dijawab"}
+            </span>
+          </div>
+
+          <p class="soft-text" style="margin:10px 0 12px;">${item.story}</p>
+          <small>${item.date}</small>
+
+          <div class="verse-actions" style="margin-top:14px;">
+            <button class="mini-btn" onclick="togglePrayerStatus(${index})">
+              ${item.status === "waiting" ? "Tandai Sudah Dijawab" : "Kembali ke Menunggu"}
+            </button>
+            <button class="mini-btn" onclick="deleteAnsweredPrayer(${index})">Hapus</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function getPlanProgress() {
+      return JSON.parse(localStorage.getItem("readingPlanProgress")) || {};
+    }
+
+    function savePlanProgress(data) {
+      localStorage.setItem("readingPlanProgress", JSON.stringify(data));
+    }
+
+    function openPlan(planKey) {
+      const plan = readingPlans[planKey];
+      const container = document.getElementById("planDetail");
+      const progressData = getPlanProgress();
+      const currentDay = progressData[planKey]?.day || 1;
+      const isStarted = progressData[planKey]?.started || false;
+      const completed = progressData[planKey]?.completed || false;
+
+      const safeDay = Math.min(currentDay, plan.days.length);
+      const todayContent = plan.days[safeDay - 1];
+      const progressPercent = Math.min(((safeDay - 1) / plan.duration) * 100, 100);
+
+      container.innerHTML = `
+        <div class="plan-detail-card fade-up">
+          <div class="plan-progress">
+            <div>
+              <span class="pill">${plan.duration} Hari</span>
+              <h3 style="margin-bottom:8px;">${plan.title}</h3>
+              <p class="soft-text">${plan.description}</p>
+            </div>
+            <div class="soft-text" style="font-weight:700;">
+              ${completed ? "Selesai" : `Hari ${safeDay} / ${plan.duration}`}
+            </div>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:${completed ? 100 : progressPercent}%;"></div>
+          </div>
+
+          <div class="plan-day-box">
+            <h4>${completed ? "Plan selesai 🤍" : `Bacaan Hari ${safeDay}`}</h4>
+            <div class="daily-verse-text" style="font-size:1.7rem;">
+              "${todayContent.text}"
+            </div>
+            <div class="verse-ref">${todayContent.verse}</div>
+            <p class="soft-text">${todayContent.reflection}</p>
+          </div>
+
+          <div class="verse-actions">
+            ${
+              !isStarted
+                ? `<button class="btn btn-primary" onclick="startPlan('${planKey}')">Mulai Plan</button>`
+                : !completed
+                ? `<button class="btn btn-primary" onclick="nextPlanDay('${planKey}')">Lanjut Hari Berikutnya</button>`
+                : `<button class="btn btn-primary" onclick="restartPlan('${planKey}')">Mulai Lagi dari Awal</button>`
+            }
+            <button class="mini-btn" onclick="savePlanVerse('${planKey}')">Simpan Ayat Hari Ini</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function startPlan(planKey) {
+      const progressData = getPlanProgress();
+      progressData[planKey] = {
+        started: true,
+        day: 1,
+        completed: false
+      };
+      savePlanProgress(progressData);
+      openPlan(planKey);
+      showToast("Reading plan dimulai 🤍", "success");
+    }
+
+    function nextPlanDay(planKey) {
+      const plan = readingPlans[planKey];
+      const progressData = getPlanProgress();
+
+      if (!progressData[planKey]) {
+        progressData[planKey] = { started: true, day: 1, completed: false };
+      }
+
+      if (progressData[planKey].day < plan.duration) {
+        progressData[planKey].day += 1;
+      } else {
+        progressData[planKey].completed = true;
+      }
+
+      if (progressData[planKey].day >= plan.duration) {
+        progressData[planKey].day = plan.duration;
+        progressData[planKey].completed = true;
+      }
+
+      savePlanProgress(progressData);
+      openPlan(planKey);
+
+      if (progressData[planKey].completed) {
+        showToast("Reading plan selesai. Proud of you 🤍", "success");
+      } else {
+        showToast(`Lanjut ke hari ${progressData[planKey].day} ✨`, "success");
+      }
+    }
+
+    function restartPlan(planKey) {
+      const progressData = getPlanProgress();
+      progressData[planKey] = {
+        started: true,
+        day: 1,
+        completed: false
+      };
+      savePlanProgress(progressData);
+      openPlan(planKey);
+      showToast("Plan dimulai lagi dari awal 🤍", "info");
+    }
+
+    function savePlanVerse(planKey) {
+      const plan = readingPlans[planKey];
+      const progressData = getPlanProgress();
+      const currentDay = progressData[planKey]?.day || 1;
+      const content = plan.days[currentDay - 1];
+
+      const saved = getSavedVerses();
+      saved.unshift({
+        text: content.text,
+        ref: content.verse
+      });
+      localStorage.setItem("savedVerses", JSON.stringify(saved));
+      renderSavedVerses();
+      showToast("Ayat dari reading plan berhasil disimpan.", "success");
+    }
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(" ");
+  let line = "";
+  let lines = [];
+
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + " ";
+    const metrics = ctx.measureText(testLine);
+    const testWidth = metrics.width;
+
+    if (testWidth > maxWidth && n > 0) {
+      lines.push(line.trim());
+      line = words[n] + " ";
+    } else {
+      line = testLine;
+    }
+  }
+
+  lines.push(line.trim());
+
+  lines.forEach((lineText, i) => {
+    ctx.fillText(lineText, x, y + (i * lineHeight));
+  });
+
+  return lines.length;
+}
+
+function downloadDailyVerseImage() {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = 1080;
+  canvas.height = 1350;
+
+  const bgGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  bgGradient.addColorStop(0, "#f7f3ee");
+  bgGradient.addColorStop(1, "#e6efe8");
+  ctx.fillStyle = bgGradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "rgba(255,255,255,0.72)";
+  roundRect(ctx, 70, 90, 940, 1080, 36, true, false);
+
+  ctx.fillStyle = "#9B7354";
+  ctx.font = "700 34px 'Plus Jakarta Sans', sans-serif";
+  ctx.fillText("Verse of the Day", 120, 170);
+
+  ctx.fillStyle = "#4F3C2D";
+  ctx.font = "italic 58px 'Georgia', serif";
+
+  const verseText = `"${dailyVerse.text}"`;
+  const lineCount = wrapText(ctx, verseText, 120, 270, 840, 82);
+
+  ctx.fillStyle = "#7C5A40";
+  ctx.font = "700 32px 'Plus Jakarta Sans', sans-serif";
+  const refY = 270 + (lineCount * 82) + 30;
+  ctx.fillText(dailyVerse.ref, 120, refY);
+
+  ctx.fillStyle = "#6E5E52";
+  ctx.font = "400 30px 'Plus Jakarta Sans', sans-serif";
+  wrapText(ctx, dailyVerse.reflection, 120, refY + 70, 820, 50);
+
+  ctx.fillStyle = "rgba(79, 60, 45, 0.18)";
+  ctx.font = "700 28px 'Plus Jakarta Sans', sans-serif";
+  ctx.fillText("mybibleverse.id", 120, 1120);
+
+  ctx.strokeStyle = "rgba(155,115,84,0.18)";
+  ctx.lineWidth = 2;
+  roundRect(ctx, 70, 90, 940, 1080, 36, false, true);
+
+  const link = document.createElement("a");
+  link.download = "verse-of-the-day-mybibleverse.png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+
+  showToast("Ayat berhasil didownload.", "success");
+}
+
+function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+  if (typeof radius === "number") {
+    radius = { tl: radius, tr: radius, br: radius, bl: radius };
+  } else {
+    radius = { tl: 0, tr: 0, br: 0, bl: 0, ...radius };
+  }
+
+  ctx.beginPath();
+  ctx.moveTo(x + radius.tl, y);
+  ctx.lineTo(x + width - radius.tr, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+  ctx.lineTo(x + width, y + height - radius.br);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+  ctx.lineTo(x + radius.bl, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+  ctx.lineTo(x, y + radius.tl);
+  ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+  ctx.closePath();
+
+  if (fill) ctx.fill();
+  if (stroke) ctx.stroke();
+}
+
+let selectedDownloadTheme = "soft-paper";
+
+function openDownloadModal() {
+  const modal = document.getElementById("downloadModal");
+  if (!modal) return;
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+  renderDownloadPreview();
+}
+
+function closeDownloadModal() {
+  const modal = document.getElementById("downloadModal");
+  if (!modal) return;
+  modal.classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+function selectDownloadTheme(theme, el) {
+  selectedDownloadTheme = theme;
+  document.querySelectorAll(".theme-btn").forEach(btn => btn.classList.remove("active"));
+  if (el) el.classList.add("active");
+  renderDownloadPreview();
+}
+
+function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(" ");
+  let line = "";
+  const lines = [];
+
+  for (let i = 0; i < words.length; i++) {
+    const testLine = line + words[i] + " ";
+    const testWidth = ctx.measureText(testLine).width;
+
+    if (testWidth > maxWidth && i > 0) {
+      lines.push(line.trim());
+      line = words[i] + " ";
+    } else {
+      line = testLine;
+    }
+  }
+
+  lines.push(line.trim());
+
+  lines.forEach((ln, index) => {
+    ctx.fillText(ln, x, y + (index * lineHeight));
+  });
+
+  return lines.length;
+}
+
+function drawRoundedRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function renderDownloadPreview() {
+  const canvas = document.getElementById("downloadPreviewCanvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width;
+  const h = canvas.height;
+
+  ctx.clearRect(0, 0, w, h);
+
+  if (selectedDownloadTheme === "soft-paper") {
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, "#f8f4ef");
+    grad.addColorStop(1, "#eef3ee");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+    drawDownloadCard(ctx, selectedDownloadTheme);
+    return;
+  }
+
+  if (selectedDownloadTheme === "sage-calm") {
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, "#edf3ef");
+    grad.addColorStop(1, "#dfe9e2");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.fillStyle = "rgba(168,184,162,0.14)";
+    ctx.beginPath();
+    ctx.arc(860, 250, 180, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(220, 1040, 150, 0, Math.PI * 2);
+    ctx.fill();
+
+    drawDownloadCard(ctx, selectedDownloadTheme);
+    return;
+  }
+
+  if (selectedDownloadTheme === "nature-mist") {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80";
+    img.onload = function () {
+      ctx.drawImage(img, 0, 0, w, h);
+
+      const mist = ctx.createLinearGradient(0, 0, 0, h);
+      mist.addColorStop(0, "rgba(236,242,238,0.26)");
+      mist.addColorStop(0.45, "rgba(244,246,242,0.16)");
+      mist.addColorStop(1, "rgba(225,235,229,0.22)");
+      ctx.fillStyle = mist;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.fillStyle = "rgba(120, 145, 130, 0.10)";
+      ctx.beginPath();
+      ctx.arc(860, 240, 210, 0, Math.PI * 2);
+      ctx.fill();
+
+      drawDownloadCard(ctx, selectedDownloadTheme);
+    };
+    img.onerror = function () {
+      const grad = ctx.createLinearGradient(0, 0, 0, h);
+      grad.addColorStop(0, "#eef2ee");
+      grad.addColorStop(1, "#dfe8e1");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+      drawDownloadCard(ctx, selectedDownloadTheme);
+    };
+    return;
+  }
+}
+
+function drawDownloadCard(ctx, theme = "soft-paper") {
+  const canvas = document.getElementById("downloadPreviewCanvas");
+  const w = canvas.width;
+  const h = canvas.height;
+
+  ctx.save();
+
+  let cardX = 78;
+  let cardY = 90;
+  let cardW = 924;
+  let cardH = 1110;
+
+  if (theme === "nature-mist") {
+    ctx.shadowColor = "rgba(44, 58, 48, 0.12)";
+    ctx.shadowBlur = 28;
+    ctx.shadowOffsetY = 12;
+
+    ctx.fillStyle = "rgba(255,255,255,0.58)";
+    drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 34);
+    ctx.fill();
+
+    ctx.shadowColor = "transparent";
+    ctx.strokeStyle = "rgba(255,255,255,0.28)";
+    ctx.lineWidth = 1.6;
+    drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 34);
+    ctx.stroke();
+  } else if (theme === "sage-calm") {
+    ctx.fillStyle = "rgba(255,255,255,0.72)";
+    drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 34);
+    ctx.fill();
+
+    ctx.strokeStyle = "rgba(155,115,84,0.10)";
+    ctx.lineWidth = 2;
+    drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 34);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = "rgba(255,255,255,0.84)";
+    drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 34);
+    ctx.fill();
+
+    ctx.strokeStyle = "rgba(155,115,84,0.14)";
+    ctx.lineWidth = 2;
+    drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 34);
+    ctx.stroke();
+  }
+
+  ctx.fillStyle = "#9B7354";
+  ctx.font = "700 34px 'Plus Jakarta Sans'";
+  ctx.fillText("Verse of the Day", 130, 165);
+
+  ctx.fillStyle = "#4F3C2D";
+  ctx.font = "italic 42px Georgia";
+
+  const verse = `"${dailyVerse.text}"`;
+  const lineCount = wrapCanvasText(ctx, verse, 130, 245, 785, 62);
+
+  const refY = 245 + (lineCount * 62) + 24;
+
+  ctx.fillStyle = "#7C5A40";
+  ctx.font = "700 28px 'Plus Jakarta Sans'";
+  ctx.fillText(dailyVerse.ref, 130, refY);
+
+  ctx.fillStyle = "#6E5E52";
+  ctx.font = "400 28px 'Plus Jakarta Sans'";
+  wrapCanvasText(ctx, dailyVerse.reflection, 130, refY + 66, 770, 42);
+
+  if (theme === "nature-mist") {
+    ctx.fillStyle = "rgba(79,60,45,0.34)";
+  } else {
+    ctx.fillStyle = "rgba(79,60,45,0.24)";
+  }
+
+  ctx.font = "600 24px 'Plus Jakarta Sans'";
+  ctx.fillText("© mybibleverse.id", 130, 1135);
+
+  ctx.restore();
+}
+function downloadVerseFromCanvas() {
+  const canvas = document.getElementById("downloadPreviewCanvas");
+  if (!canvas) return;
+
+  const link = document.createElement("a");
+  link.download = `verse-of-the-day-${selectedDownloadTheme}.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+
+  showToast("Ayat berhasil didownload.", "success");
+}
+
+    loadDailyVerse();
+    renderSavedVerses();
+    renderCheckinHistory();
+    renderStreak();
+    loadQuietTime();
+    initQuietAudio();
+    renderAnsweredPrayers();
+    openPlan("plan7");
+    
+  </script>
+
+  <div class="download-modal" id="downloadModal">
+  <div class="download-modal-backdrop" onclick="closeDownloadModal()"></div>
+
+  <div class="download-modal-content">
+    <div class="download-modal-head">
+      <div>
+        <h3>Pilih Tema Download</h3>
+        <p class="soft-text">Download ayat dengan tampilan yang lebih estetik dan sejuk.</p>
+      </div>
+      <button class="modal-close" onclick="closeDownloadModal()">✕</button>
+    </div>
+
+    <div class="theme-picker">
+      <button class="theme-btn active" data-theme="soft-paper" onclick="selectDownloadTheme('soft-paper', this)">Soft Paper</button>
+      <button class="theme-btn" data-theme="sage-calm" onclick="selectDownloadTheme('sage-calm', this)">Sage Calm</button>
+      <button class="theme-btn" data-theme="nature-mist" onclick="selectDownloadTheme('nature-mist', this)">Nature Mist</button>
+    </div>
+
+    <div class="download-preview-wrap">
+      <canvas id="downloadPreviewCanvas" width="1080" height="1350"></canvas>
+    </div>
+
+    <div class="verse-actions">
+      <button class="mini-btn" onclick="closeDownloadModal()">Batal</button>
+      <button class="btn btn-primary" onclick="downloadVerseFromCanvas()">Download Sekarang</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
